@@ -4,7 +4,14 @@ public class Employee {
 	
 	private int Id;
 	private String Name;
+	private String Address;
 	
+	public String getAddress() {
+		return Address;
+	}
+	public void setAddress(String address) {
+		Address = address;
+	}
 	public int getId() {
 		return Id;
 	}
@@ -17,7 +24,5 @@ public class Employee {
 	public void setName(String name) {
 		Name = name;
 	}
-	
-	
 	
 }

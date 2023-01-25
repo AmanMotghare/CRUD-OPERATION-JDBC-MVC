@@ -11,17 +11,17 @@ import MyPojo.Employee;
 
 public class Insert {
 	
-	private static final String Insert_Query = "INSERT INTO EMP (EID,ENAME) VALUES (?,?)";
+	Scanner scan = new Scanner(System.in);
+	
+	private static final String Insert_Query = "INSERT INTO EMP (EID,ENAME,EADDR) VALUES (?,?,?)";
 	
 	public Insert() throws ClassNotFoundException, SQLException {
-		// TODO Auto-generated constructor stub
-		System.out.println("Hey I am insert class constructor");
+	//	System.out.println("Hey I am insert class constructor");
 		AddEmployees();
 	}
 	
 	void AddEmployees() throws SQLException, ClassNotFoundException{
 		
-		Scanner scan = new Scanner(System.in);
 		Employee emp = new Employee();
 		
 	//	2.Build Connection.
@@ -48,9 +48,14 @@ public class Insert {
 			String Name = scan.nextLine();
 			emp.setName(Name);
 			
+			System.out.print("Address : ");
+			String Address = scan.nextLine();
+			emp.setAddress(Address);
+			
 			PreparedStatement ps = con.prepareStatement(Insert_Query);
 			ps.setInt(1, emp.getId());
 			ps.setString(2, emp.getName());
+			ps.setString(3, emp.getAddress());
 			
 		//  4.Execute Update.
 			
@@ -71,7 +76,9 @@ public class Insert {
 				try {
 					TimeUnit.SECONDS.sleep(1);
 				} catch (InterruptedException e) {
+					
 					// TODO Auto-generated catch block
+					
 					e.printStackTrace();
 				}
 			}
@@ -84,7 +91,7 @@ public class Insert {
 			con.close();
 			System.out.println("\nConnection Closed.");
 			
-			System.out.println("\nCheck out your DataBase Table");
+			System.out.println("\nCheck out your DataBase Table.");
 				
 	}
 }
